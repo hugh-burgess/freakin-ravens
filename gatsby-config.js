@@ -9,6 +9,15 @@ module.exports = {
 
   plugins: [
     {
+      resolve: `gatsby-plugin-prettier-build`,
+      options: {
+        // default values
+        types: ['html'],
+        concurrency: 20,
+        verbose: true
+      }
+    },
+    {
       resolve: `gatsby-plugin-output`,
       options: {
         // default values
@@ -16,7 +25,8 @@ module.exports = {
         rmPublicFolder: false
       }
     },
-    `gatsby-plugin-prettier-build`
+    `gatsby-plugin-prettier-build`,
+    `gatsby-plugin-output`
 
   ],
 }

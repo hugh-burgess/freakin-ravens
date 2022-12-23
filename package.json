@@ -9,7 +9,7 @@
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
-    "build": "gatsby build",
+    "build": "OUTPUT_DIR=public gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
@@ -18,11 +18,12 @@
     "gatsby-cli": "^5.3.1",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-output": "^0.1.3",
+    "gatsby-plugin-prettier-build": "^0.4.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^4.9.4"
   },
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/hugh-burgess/game/game-app"
   }

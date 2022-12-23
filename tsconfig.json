@@ -1,13 +1,10 @@
 {
     "compilerOptions": {
       "typeRoots": ["node_modules/@types", "src/types"],
-      "baseUrl": ".",
+      "baseUrl": "./",
       "paths": {
-        "@components/*": ["src/components/*"],
-        "@pages/*": ["src/pages/*"],
-        "@public/*": ["src/public/*"],
-        "@system/*": ["src/system/*"],
-        "@templates/*": ["src/templates/*"]
+        "@public/*": ["public/*"],
+        "@images/*": ["src/images/*"],
       }
     },
     "include": ["src/**/*"],
