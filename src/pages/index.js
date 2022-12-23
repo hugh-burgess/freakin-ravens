@@ -1,21 +1,7 @@
 import React from 'react'
 import dog from '@public/images/shadow_dog.png'
+import dog_animation_database from "../system/animations/database.json"
 import '@styles/style.css'
-
-const pageStyles = {
-  color: '#232129',
-  padding: 96,
-  fontFamily: '-apple-system, Roboto, sans-serif, serif',
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-
-const paragraphStyles = {
-  marginBottom: 48,
-}
 
 const IndexPage = () => {
   setTimeout(() => {
@@ -38,48 +24,7 @@ playerState = e.target.value
     let gameFrame = 0
     const STAGGER_FRAMES = 4 // lower is faster, higher is slower
     const SPRITE_ANIMATIONS = []
-    const ANIMATION_STATES = [
-      {
-        name: 'idle',
-        frames: 7,
-      },
-      {
-        name: 'jump',
-        frames: 7,
-      },
-      {
-        name: 'fall',
-        frames: 7,
-      },
-      {
-        name: 'run',
-        frames: 9,
-      },
-      {
-        name: 'dizzy',
-        frames: 11,
-      },
-      {
-        name: 'rest',
-        frames: 5,
-      },
-      {
-        name: 'roll',
-        frames: 7,
-      },
-      {
-        name: 'bite',
-        frames: 7,
-      },
-      {
-        name: 'dead',
-        frames: 12,
-      },
-      {
-        name: 'hit',
-        frames: 4,
-      },
-    ]
+    const ANIMATION_STATES = dog_animation_database
 
     ANIMATION_STATES.forEach((state, index) => {
       let frames = {
@@ -124,8 +69,8 @@ playerState = e.target.value
   }, 10)
 
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Dog Animations</h1>
+    <main className="pageStyles">
+      <h1 className="headingStyles">Dog Animations</h1>
       <canvas id="canvas1"></canvas>
       <div className="controls">
         <label for="animations">Choose animation: </label>
@@ -148,4 +93,4 @@ playerState = e.target.value
 
 export default IndexPage
 
-export const Head = () => <title>Hugh's Little Game</title>
+export const Head = () => <title>Hugh's Dog</title>
