@@ -16,5 +16,7 @@ module.exports = {
         rmPublicFolder: false
       }
     },
+    `gatsby-plugin-prettier-build`
+
   ],
 }
