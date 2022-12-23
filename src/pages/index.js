@@ -1,176 +1,96 @@
-import * as React from "react"
-
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
-
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
-
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  marginBottom: 24,
-}
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
-
-const docLink = {
-  text: "Documentation",
-  url: "https://www.gatsbyjs.com/docs/",
-  color: "#8954A8",
-}
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
-
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
-]
+import React from 'react'
+import dog from '@public/images/shadow_dog.png'
+import dog_animation_database from "../system/animations/database.json"
+import '@styles/style.css'
 
 const IndexPage = () => {
+  setTimeout(() => {
+    let playerState = 'idle'
+const DROPDOWN = document.getElementById('animations')
+DROPDOWN.addEventListener('change', function(e){
+playerState = e.target.value
+})
+
+    const CANVAS = document.getElementById('canvas1')
+    const ctx = CANVAS.getContext('2d')
+    const CANVAS_WIDTH = (CANVAS.width = 600)
+    const CANVAS_HEIGHT = (CANVAS.height = 600)
+    const SPRITE_WIDTH = 575 // width of svg of player divided by total columns in images + 2px margin
+    const SPRITE_HEIGHT = 523 // height of svg of player divided by total rows in images
+    const PLAYER_IMAGE = new Image()
+    PLAYER_IMAGE.src = dog
+
+    // slow the animation down
+    let gameFrame = 0
+    const STAGGER_FRAMES = 4 // lower is faster, higher is slower
+    const SPRITE_ANIMATIONS = []
+    const ANIMATION_STATES = dog_animation_database
+
+    ANIMATION_STATES.forEach((state, index) => {
+      let frames = {
+        loc: [],
+      }
+      for (let j = 0; j < state.frames; j++) {
+        let positionX = j * SPRITE_WIDTH
+        let positionY = index * SPRITE_HEIGHT
+        frames.loc.push({ x: positionX, y: positionY })
+      }
+      SPRITE_ANIMATIONS[state.name] = frames // create a new key value in SPRITE_ANIMATIONS, call it by the name of the looped object and assign it the value of frames.loc which is the relevant positions given for that animation
+    })
+
+    function animate() {
+      ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT) // clears the svg image between looping images
+      let position =
+        Math.floor(gameFrame / STAGGER_FRAMES) %
+        SPRITE_ANIMATIONS[playerState].loc.length // each row has total of 6 seen images without blank spaces afterwards, e.g. image 8 on row 1. This calculation only cycles between 0 and the number given.
+      let frameX = SPRITE_WIDTH * position
+      let frameY = SPRITE_ANIMATIONS[playerState].loc[position].y
+      // ctx.drawImage(PLAYER_IMAGE, sourceImageX, sourceImageY, sourceImageWidth, sourceImageHeight, destinationX, destinationY, destinationWidth, destinationHeight)
+      ctx.drawImage(
+        PLAYER_IMAGE,
+        frameX, // moving the width from 1 frame to the next by the width of the image
+        frameY,
+        SPRITE_WIDTH,
+        SPRITE_HEIGHT,
+        0,
+        0,
+        SPRITE_WIDTH, // setting it here to the original width of the single cropped image
+        SPRITE_HEIGHT // setting it here to the original height of the single cropped image
+      )
+
+      // if (gameFrame % STAGGER_FRAMES === 0) {
+      //   if (frameX < 6) {frameX++} else frameX = 0
+      // } <-- We can refactor this better!
+
+      gameFrame++
+      requestAnimationFrame(animate) // built in, runs once, but adding "animate" runs the parent funciton and thus a loop
+    }
+    animate() // calls the function and renders the shape
+  }, 10)
+
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
-        update in real-time. 😎
-      </p>
-      <ul style={listStyles}>
-        <li style={docLinkStyle}>
-          <a
-            style={linkStyle}
-            href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-          >
-            {docLink.text}
-          </a>
-        </li>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-              >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
+    <main className="pageStyles">
+      <h1 className="headingStyles">Dog Animations</h1>
+      <canvas id="canvas1"></canvas>
+      <div className="controls">
+        <label for="animations">Choose animation: </label>
+        <select id="animations" name="animations">
+          <option value="idle">Idle</option>
+          <option value="jump">Jump</option>
+          <option value="fall">Fall</option>
+          <option value="run">Run</option>
+          <option value="dizzy">Dizzy</option>
+          <option value="rest">Rest</option>
+          <option value="roll">Roll</option>
+          <option value="bite">Bite</option>
+          <option value="dead">Dead</option>
+          <option value="hit">Hit</option>
+        </select>
+      </div>
     </main>
   )
 }
 
 export default IndexPage
 
-export const Head = () => <title>Home Page</title>
+export const Head = () => <title>Hugh's Dog</title>

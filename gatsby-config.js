@@ -9,6 +9,15 @@ module.exports = {
 
   plugins: [
     {
+      resolve: `gatsby-plugin-prettier-build`,
+      options: {
+        // default values
+        types: ['html'],
+        concurrency: 20,
+        verbose: true
+      }
+    },
+    {
       resolve: `gatsby-plugin-output`,
       options: {
         // default values
@@ -16,7 +25,22 @@ module.exports = {
         rmPublicFolder: false
       }
     },
-    `gatsby-plugin-prettier-build`
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@public": "public",
+          "@images": "src/images",
+          "@styles": "src/styles",
+        },
+        extensions: [
+          "js",
+        ],
+      }
+    },
+    `gatsby-plugin-prettier-build`,
+    `gatsby-plugin-output`,
+    `gatsby-plugin-alias-imports`
 
   ],
 }
