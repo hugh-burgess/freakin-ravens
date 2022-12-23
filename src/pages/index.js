@@ -39,12 +39,12 @@ const IndexPage = () => {
         playerImage,
         0,
         0,
-      600,
-        600,
+        SPRITE_WIDTH,
+        SPRITE_HEIGHT,
         0,
         0,
-        CANVAS_WIDTH,
-        CANVAS_HEIGHT
+        SPRITE_WIDTH,
+        SPRITE_HEIGHT,
       )
 
       requestAnimationFrame(animate) // built in, runs once, but adding "animate" runs the parent funciton and thus a loop
