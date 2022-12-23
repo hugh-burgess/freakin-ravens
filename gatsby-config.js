@@ -31,6 +31,7 @@ module.exports = {
         alias: {
           "@public": "public",
           "@images": "src/images",
+          "@styles": "src/styles",
         },
         extensions: [
           "js",
