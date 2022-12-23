@@ -1,5 +1,4 @@
 import React from 'react'
-import icon from '@public/images/icon.png'
 import dog from '@public/images/shadow_dog.png'
 import '@styles/style.css'
 
@@ -20,6 +19,12 @@ const paragraphStyles = {
 
 const IndexPage = () => {
   setTimeout(() => {
+    let playerState = 'idle'
+const DROPDOWN = document.getElementById('animations')
+DROPDOWN.addEventListener('change', function(e){
+playerState = e.target.value
+})
+
     const CANVAS = document.getElementById('canvas1')
     const ctx = CANVAS.getContext('2d')
     const CANVAS_WIDTH = (CANVAS.width = 600)
@@ -73,7 +78,7 @@ const IndexPage = () => {
       {
         name: 'hit',
         frames: 4,
-      }
+      },
     ]
 
     ANIMATION_STATES.forEach((state, index) => {
@@ -90,9 +95,11 @@ const IndexPage = () => {
 
     function animate() {
       ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT) // clears the svg image between looping images
-      let position = Math.floor(gameFrame / STAGGER_FRAMES) % SPRITE_ANIMATIONS["idle"].loc.length // each row has total of 6 seen images without blank spaces afterwards, e.g. image 8 on row 1. This calculation only cycles between 0 and the number given.
+      let position =
+        Math.floor(gameFrame / STAGGER_FRAMES) %
+        SPRITE_ANIMATIONS[playerState].loc.length // each row has total of 6 seen images without blank spaces afterwards, e.g. image 8 on row 1. This calculation only cycles between 0 and the number given.
       let frameX = SPRITE_WIDTH * position
-      let frameY = SPRITE_ANIMATIONS["idle"].loc[position].y
+      let frameY = SPRITE_ANIMATIONS[playerState].loc[position].y
       // ctx.drawImage(PLAYER_IMAGE, sourceImageX, sourceImageY, sourceImageWidth, sourceImageHeight, destinationX, destinationY, destinationWidth, destinationHeight)
       ctx.drawImage(
         PLAYER_IMAGE,
@@ -118,10 +125,23 @@ const IndexPage = () => {
 
   return (
     <main style={pageStyles}>
-      <h1 style={headingStyles}>Hugh's Little Game</h1>
-      <p style={paragraphStyles}>Let's play!</p>
+      <h1 style={headingStyles}>Dog Animations</h1>
       <canvas id="canvas1"></canvas>
-      <img alt="Gatsby G Logo" src={icon} />
+      <div className="controls">
+        <label for="animations">Choose animation: </label>
+        <select id="animations" name="animations">
+          <option value="idle">Idle</option>
+          <option value="jump">Jump</option>
+          <option value="fall">Fall</option>
+          <option value="run">Run</option>
+          <option value="dizzy">Dizzy</option>
+          <option value="rest">Rest</option>
+          <option value="roll">Roll</option>
+          <option value="bite">Bite</option>
+          <option value="dead">Dead</option>
+          <option value="hit">Hit</option>
+        </select>
+      </div>
     </main>
   )
 }
