@@ -1,4 +1,5 @@
 import * as React from "react"
+import icon from "@images/icon.png"
 
 const pageStyles = {
   color: "#232129",
@@ -165,7 +166,7 @@ const IndexPage = () => {
       </ul>
       <img
         alt="Gatsby G Logo"
-        src="@images/icon.png"
+        src={icon}
       />
     </main>
   )

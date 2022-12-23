@@ -25,8 +25,21 @@ module.exports = {
         rmPublicFolder: false
       }
     },
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@public": "public",
+          "@images": "src/images",
+        },
+        extensions: [
+          "js",
+        ],
+      }
+    },
     `gatsby-plugin-prettier-build`,
-    `gatsby-plugin-output`
+    `gatsby-plugin-output`,
+    `gatsby-plugin-alias-imports`
 
   ],
 }
