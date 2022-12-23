@@ -24,7 +24,8 @@ const IndexPage = () => {
     const ctx = canvas.getContext('2d')
     const CANVAS_WIDTH = (canvas.width = 600)
     const CANVAS_HEIGHT = (canvas.height = 600)
-    const SPRITE_WIDTH = '575px' // width of svg of player divided by total columns in images + 2px margin
+    const SPRITE_WIDTH = 575 // width of svg of player divided by total columns in images + 2px margin
+    const SPRITE_HEIGHT = 523 // height of svg of player divided by total rows in images
     const playerImage = new Image()
     playerImage.src = dog
 
