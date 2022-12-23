@@ -165,7 +165,7 @@ const IndexPage = () => {
       </ul>
       <img
         alt="Gatsby G Logo"
-        src="@images/"
+        src="@images/icon.png"
       />
     </main>
   )
