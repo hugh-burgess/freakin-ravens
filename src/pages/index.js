@@ -1,15 +1,15 @@
 import React from 'react'
-import dog from '@public/images/shadow_dog.png'
-import dog_animation_database from "../system/animations/database.json"
+import dog from '@images/shadow_dog.png'
+import dog_animation_database from '@system/animations/database'
 import '@styles/style.css'
 
 const IndexPage = () => {
   setTimeout(() => {
     let playerState = 'idle'
-const DROPDOWN = document.getElementById('animations')
-DROPDOWN.addEventListener('change', function(e){
-playerState = e.target.value
-})
+    const DROPDOWN = document.getElementById('animations')
+    DROPDOWN.addEventListener('change', function (e) {
+      playerState = e.target.value
+    })
 
     const CANVAS = document.getElementById('canvas1')
     const ctx = CANVAS.getContext('2d')

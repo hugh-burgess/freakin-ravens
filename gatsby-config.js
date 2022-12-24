@@ -1,3 +1,4 @@
+const path = require('path')
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
@@ -14,33 +15,31 @@ module.exports = {
         // default values
         types: ['html'],
         concurrency: 20,
-        verbose: true
-      }
+        verbose: true,
+      },
     },
     {
       resolve: `gatsby-plugin-output`,
       options: {
         // default values
         publicPath: 'public',
-        rmPublicFolder: false
-      }
+        rmPublicFolder: false,
+      },
     },
     {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {
-          "@public": "public",
-          "@images": "src/images",
-          "@styles": "src/styles",
+          '@static': path.resolve(__dirname, 'static'),
+          '@styles': path.resolve(__dirname, 'static/styles'),
+          '@system': path.resolve(__dirname, 'src/system'),
+          '@images': path.resolve(__dirname, 'static/images'),
         },
-        extensions: [
-          "js",
-        ],
-      }
+       extensions: ['js', 'css', 'json'],
+      },
     },
     `gatsby-plugin-prettier-build`,
     `gatsby-plugin-output`,
-    `gatsby-plugin-alias-imports`
-
+    `gatsby-plugin-alias-imports`,
   ],
 }
