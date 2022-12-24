@@ -21,19 +21,20 @@ const IndexPage = () => {
         <input type="range" min="0" max="20" className="slider" id="slider" />
       </div>
       {/* <div className="controls">
-        <label for="animations">Choose animation: </label>
+        <label for="animations">Choose animation: 
         <select id="animations" name="animations">
-          <option value="idle">Idle</option>
-          <option value="jump">Jump</option>
-          <option value="fall">Fall</option>
-          <option value="run">Run</option>
-          <option value="dizzy">Dizzy</option>
-          <option value="rest">Rest</option>
-          <option value="roll">Roll</option>
-          <option value="bite">Bite</option>
-          <option value="dead">Dead</option>
-          <option value="hit">Hit</option>
+        <option value="idle">Idle</option>
+        <option value="jump">Jump</option>
+        <option value="fall">Fall</option>
+        <option value="run">Run</option>
+        <option value="dizzy">Dizzy</option>
+        <option value="rest">Rest</option>
+        <option value="roll">Roll</option>
+        <option value="bite">Bite</option>
+        <option value="dead">Dead</option>
+        <option value="hit">Hit</option>
         </select>
+        </label>
       </div> */}
     </main>
   )
