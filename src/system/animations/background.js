@@ -20,24 +20,41 @@ const Background = () => {
   const BACKGROUND_LAYER_5 = new Image()
   BACKGROUND_LAYER_5.src = layer5
   let gameSpeed = 6
-  let x = 0
-  let x2 = 2400
+
+  // to make a group background, lets make a layer object with 5 instances of that layer class each of the layers. all images go into an array to be cycled through and drawn.
+  // JS Classes are used when you want to create many similar objects
+
+  class Layer {
+    constructor(image, speedModifier) {
+      this.x = 0 // set x on this particular property to 0
+      this.y = 0
+      this.width = 2400
+      this.height = 700
+      this.x2 = this.width
+      this.image = image
+      this.speedModifier = speedModifier
+      this.speed = gameSpeed * this.speedModifier
+    } //method is function attached to an object
+    update() {
+      this.speed = gameSpeed * this.speedModifier
+      if (this.x <= -this.width) {
+        this.x = this.width + this.x2 - this.speed
+      }
+      if (this.x2 <= -this.width) {
+        this.x2 = this.width + this.x - this.speed
+      }
+      this.x = Math.floor(this.x - this.speed)
+      this.x2 = Math.floor(this.x2 - this.speed)
+    }
+    draw() {
+      ctx.drawImage(this.image, this.x, this.y, this.width, this.height)
+      ctx.drawImage(this.image, this.x2, this.y, this.width, this.height)
+    }
+  }
+
   function animate() {
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT) // clears the svg image between looping images
-    ctx.drawImage(BACKGROUND_LAYER_4, x, 0)
-    ctx.drawImage(BACKGROUND_LAYER_4, x2, 0)
-    if (x < -2400) {
-      x = 2400 - gameSpeed
-    } // reset when the background leaves the screen
-    else {
-      x -= gameSpeed
-    }
-    if (x2 < -2400) {
-      x2 = 2400 - gameSpeed
-    } // reset when the background leaves the screen
-    else {
-      x2 -= gameSpeed
-    }
+
     requestAnimationFrame(animate) // built in, runs once, but adding "animate" runs the parent funciton and thus a loop
   }
   return animate()
