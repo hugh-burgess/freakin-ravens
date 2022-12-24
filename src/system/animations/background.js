@@ -26,6 +26,7 @@ const Background = () => {
 
   class Layer {
     constructor(image, speedModifier) {
+      // speedModifier is the speed of pixels per frame
       this.x = 0 // set x on this particular property to 0
       this.y = 0
       this.width = 2400
@@ -52,9 +53,24 @@ const Background = () => {
     }
   }
 
+  const LAYER_1 = new Layer(BACKGROUND_LAYER_1, 0) // creates an instance of a custom JS Class
+  const LAYER_2 = new Layer(BACKGROUND_LAYER_2, 0.2)
+  const LAYER_3 = new Layer(BACKGROUND_LAYER_3, 0.3)
+  const LAYER_4 = new Layer(BACKGROUND_LAYER_4, 0.5)
+  const LAYER_5 = new Layer(BACKGROUND_LAYER_5, 1)
+
   function animate() {
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT) // clears the svg image between looping images
-
+    LAYER_1.update()
+    LAYER_1.draw()
+    LAYER_2.update()
+    LAYER_2.draw()
+    LAYER_3.update()
+    LAYER_3.draw()
+    LAYER_4.update()
+    LAYER_4.draw()
+    LAYER_5.update()
+    LAYER_5.draw()
     requestAnimationFrame(animate) // built in, runs once, but adding "animate" runs the parent funciton and thus a loop
   }
   return animate()
