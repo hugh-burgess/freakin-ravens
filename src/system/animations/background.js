@@ -19,7 +19,8 @@ const Background = () => {
   BACKGROUND_LAYER_4.src = layer4
   const BACKGROUND_LAYER_5 = new Image()
   BACKGROUND_LAYER_5.src = layer5
-  let gameSpeed = 8
+  let gameSpeed = 6
+  // let gameFrame = 0
 
   // to make a group background, lets make a layer object with 5 instances of that layer class each of the layers. all images go into an array to be cycled through and drawn.
   // JS Classes are used when you want to create many similar objects
@@ -31,7 +32,6 @@ const Background = () => {
       this.y = 0
       this.width = 2400
       this.height = 700
-      this.x2 = this.width
       this.image = image
       this.speedModifier = speedModifier
       this.speed = gameSpeed * this.speedModifier
@@ -39,17 +39,16 @@ const Background = () => {
     update() {
       this.speed = gameSpeed * this.speedModifier
       if (this.x <= -this.width) {
-        this.x = this.width + this.x2 - this.speed
+        this.x = 0
       }
-      if (this.x2 <= -this.width) {
-        this.x2 = this.width + this.x - this.speed
-      }
-      this.x = Math.floor(this.x - this.speed)
-      this.x2 = Math.floor(this.x2 - this.speed)
+
+      this.x = this.x - this.speed
+      //this.x = gameFrame * this.speed % this.width
+
     }
     draw() {
       ctx.drawImage(this.image, this.x, this.y, this.width, this.height)
-      ctx.drawImage(this.image, this.x2, this.y, this.width, this.height)
+      ctx.drawImage(this.image, this.x + this.width, this.y, this.width, this.height)
     }
   }
 
@@ -61,12 +60,23 @@ const Background = () => {
 
   const GAME_LAYERS = [LAYER_1, LAYER_2, LAYER_3, LAYER_4, LAYER_5]
 
+const SLIDER = document.getElementById('slider')
+SLIDER.value = gameSpeed
+const SHOW_GAME_SPEED = document.getElementById('showGameSpeed')
+SHOW_GAME_SPEED.innerHTML = gameSpeed
+SLIDER.addEventListener('change', function(e){
+gameSpeed = e.target.value
+SHOW_GAME_SPEED.innerHTML = e.target.value
+
+})
+
   function animate() {
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT) // clears the svg image between looping images
     GAME_LAYERS.forEach((layer) => {
       layer.update()
       layer.draw()
     })
+    // gameFrame--
     requestAnimationFrame(animate) // built in, runs once, but adding "animate" runs the parent funciton and thus a loop
   }
   return animate()
