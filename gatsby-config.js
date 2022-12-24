@@ -32,8 +32,10 @@ module.exports = {
         alias: {
           '@static': path.resolve(__dirname, 'static'),
           '@styles': path.resolve(__dirname, 'static/styles'),
+          '@components': path.resolve(__dirname, 'src/components'),
           '@system': path.resolve(__dirname, 'src/system'),
           '@images': path.resolve(__dirname, 'static/images'),
+          '@animations': path.resolve(__dirname, 'src/system/animations'),
         },
        extensions: ['js', 'css', 'json'],
       },
