@@ -19,7 +19,7 @@ const Background = () => {
   BACKGROUND_LAYER_4.src = layer4
   const BACKGROUND_LAYER_5 = new Image()
   BACKGROUND_LAYER_5.src = layer5
-  let gameSpeed = 6
+  let gameSpeed = 8
 
   // to make a group background, lets make a layer object with 5 instances of that layer class each of the layers. all images go into an array to be cycled through and drawn.
   // JS Classes are used when you want to create many similar objects
@@ -53,24 +53,20 @@ const Background = () => {
     }
   }
 
-  const LAYER_1 = new Layer(BACKGROUND_LAYER_1, 0) // creates an instance of a custom JS Class
-  const LAYER_2 = new Layer(BACKGROUND_LAYER_2, 0.2)
-  const LAYER_3 = new Layer(BACKGROUND_LAYER_3, 0.3)
-  const LAYER_4 = new Layer(BACKGROUND_LAYER_4, 0.5)
+  const LAYER_1 = new Layer(BACKGROUND_LAYER_1, 0.2) // creates an instance of a custom JS Class
+  const LAYER_2 = new Layer(BACKGROUND_LAYER_2, 0.4)
+  const LAYER_3 = new Layer(BACKGROUND_LAYER_3, 0.6)
+  const LAYER_4 = new Layer(BACKGROUND_LAYER_4, 0.8)
   const LAYER_5 = new Layer(BACKGROUND_LAYER_5, 1)
+
+  const GAME_LAYERS = [LAYER_1, LAYER_2, LAYER_3, LAYER_4, LAYER_5]
 
   function animate() {
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT) // clears the svg image between looping images
-    LAYER_1.update()
-    LAYER_1.draw()
-    LAYER_2.update()
-    LAYER_2.draw()
-    LAYER_3.update()
-    LAYER_3.draw()
-    LAYER_4.update()
-    LAYER_4.draw()
-    LAYER_5.update()
-    LAYER_5.draw()
+    GAME_LAYERS.forEach((layer) => {
+      layer.update()
+      layer.draw()
+    })
     requestAnimationFrame(animate) // built in, runs once, but adding "animate" runs the parent funciton and thus a loop
   }
   return animate()
