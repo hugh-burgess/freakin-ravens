@@ -5,7 +5,7 @@ This project is a little test to see if it's possible to create a game from Reac
 Step by step, building a small game:
 
 - [x] animations
-- [ ] parallax backgrounds
+- [x] parallax backgrounds
 - [ ] enemy movement patterns
 - [ ] collisions
 - [ ] point and shoot

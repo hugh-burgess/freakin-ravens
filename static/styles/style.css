@@ -1,3 +1,7 @@
+body {
+  background-color: black;
+}
+
 .pageStyles {
   color: '#232129';
   padding: '96px';
@@ -10,14 +14,28 @@
   max-width: 320;
 }
 
-#canvas1 {
-  border: 5px solid black;
+#container {
+  font-size: 25px;
   position: absolute;
+  width: 800px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
+}
+
+#canvas1 {
+  background-color: transparent;
+  position: relative;
+  width: 800px;
+  height: 700px;
+}
+
+#slider {
+  width: 100%;
+}
+
+p {
+  color: white;
 }
 
 .controls {
@@ -26,8 +44,11 @@
   top: 50px;
   left: 50%;
   transform: translateX(-50%);
+  color: grey;
 }
 
-.controls, select, option {
+.controls,
+select,
+option {
   font-size: 25px;
 }
