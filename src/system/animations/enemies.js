@@ -12,14 +12,14 @@ const Enemies = () => {
   const NUMBER_OF_ENEMIES = 100
   const ENEMIES_ARRAY = []
 
-  const ENEMY_IMAGE_1 = new Image()
-  ENEMY_IMAGE_1.src = enemyImageOne
   const ENEMY_IMAGE_2 = new Image()
   ENEMY_IMAGE_2.src = enemyImageTwo
   const ENEMY_IMAGE_3 = new Image()
   ENEMY_IMAGE_3.src = enemyImageThree
   const ENEMY_IMAGE_4 = new Image()
   ENEMY_IMAGE_4.src = enemyImageFour
+
+  let gameFrame = 0
 
   //   const ENEMY_1 = {
   //     x: 10, // the vertical and horizontal positions where we draw the enemy
@@ -32,6 +32,8 @@ const Enemies = () => {
     // a factory which generates one new object everytime we ask it
     constructor() {
       // mandatory class every Class must have containing a blueprint based on which every enemy is created
+      this.image = new Image()
+      this.image.src = enemyImageOne
       this.x = Math.random() * CANVAS.width // randomise the enemy starting position
       this.y = Math.random() * CANVAS.height
       this.speed = Math.random() * 4 - 2 // creates a speed between -2 and +2
@@ -40,17 +42,19 @@ const Enemies = () => {
       this.width = this.spriteWidth / 3 // one third of sprite width
       this.height = this.spriteHeight / 3 // one third of sprite height
       this.frame = 0
+      this.flapSpeed = Math.floor(Math.random() * 3 + 1) // random number between 1 and 4
     }
     update() {
       // a shared class method
       this.x += this.speed
       this.y += this.speed
       // animate sprites
-      this.frame++
-      if (this.frame > 5) this.frame = 0
+      if (gameFrame % this.flapSpeed === 0) { // runs code every twoo loops of every animatioon loop
+          this.frame > 4 ? this.frame = 0 : this.frame++
+      }
     }
     draw() {
-      ctx.drawImage(ENEMY_IMAGE_1, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height)
+      ctx.drawImage(this.image, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height)
     }
   }
 
@@ -69,6 +73,7 @@ const Enemies = () => {
       enemy.update()
       enemy.draw()
     })
+    gameFrame++
     requestAnimationFrame(animate) // calls the animation loop and passes the function that surrounds it
   }
 
