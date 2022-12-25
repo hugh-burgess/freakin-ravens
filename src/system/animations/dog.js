@@ -8,7 +8,7 @@ const Dog = () => {
     playerState = e.target.value
   })
 
-  const CANVAS = document.getElementById('canvas2')
+  const CANVAS = document.getElementById('canvasForDog')
   const ctx = CANVAS.getContext('2d')
   const CANVAS_WIDTH = (CANVAS.width = 600)
   const CANVAS_HEIGHT = (CANVAS.height = 600)

@@ -23,10 +23,13 @@ const IndexPage = () => {
     <main className="pageStyles">
       {/* <h1 className="headingStyles">Dog Animations</h1> */}
       <div id="container">
-        {/* <canvas id="canvas1"></canvas> */}
-        {/* <canvas id="canvas2"></canvas> */}
-        {/* <canvas id="canvas3"></canvas> */}
-        <canvas id="canvas4"></canvas>
+        {/* <canvas id="canvasForBackground"></canvas> */}
+        {/* <canvas id="canvasForDog"></canvas> */}
+        {/* <canvas id="canvasForEnemyOne"></canvas> */}
+        {/* <canvas id="canvasForEnemyTwo"></canvas> */}
+        {/* <canvas id="canvasForEnemyThree"></canvas> */}
+        {/* <canvas id="canvasForEnemyFour"></canvas> */}
+        <canvas id="canvasForExplosions"></canvas>
         {/* <p>
           Game speed: <span id="showGameSpeed"></span>
         </p> */}

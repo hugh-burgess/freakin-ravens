@@ -2,7 +2,7 @@ import enemyImageTwo from '@images/enemy2.png'
 
 const EnemyTwo = () => {
   /** @type {HTMLCanvasElement} */ // tells JS this is a canvas project and thus we get options for ctx
-  const CANVAS = document.getElementById('canvas3')
+  const CANVAS = document.getElementById('canvasForEnemyTwo')
   const ctx = CANVAS.getContext('2d')
   const CANVAS_WIDTH = (CANVAS.width = 400)
   const CANVAS_HEIGHT = (CANVAS.height = 800)

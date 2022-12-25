@@ -2,7 +2,7 @@ import explosionImage from '@images/boom.png'
 import boomSound from "@sounds/boom.wav"
 
 const Explosions = () => {
-  const CANVAS = document.getElementById('canvas4')
+  const CANVAS = document.getElementById('canvasForExplosions')
   const ctx = CANVAS.getContext('2d')
   const CANVAS_WIDTH = (CANVAS.width = 500)
   const CANVAS_HEIGHT = (CANVAS.height = 700)
