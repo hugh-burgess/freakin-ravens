@@ -1,6 +1,6 @@
 import enemyImageOne from '@images/enemy1.png'
 
-const Enemies = () => {
+const EnemyOne = () => {
   /** @type {HTMLCanvasElement} */ // tells JS this is a canvas project and thus we get options for ctx
   const CANVAS = document.getElementById('canvas3')
   const ctx = CANVAS.getContext('2d')
@@ -82,4 +82,4 @@ const Enemies = () => {
   return animate()
 }
 
-export default Enemies
+export default EnemyOne

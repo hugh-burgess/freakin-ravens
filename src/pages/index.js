@@ -3,14 +3,16 @@ import '@styles/style.css'
 //import Dog from '@animations/dog'
 //import Background from '@animations/background'
 //import EnemyOne from '@animations/enemyOne'
-import EnemyTwo from '@animations/enemyTwo'
+//import EnemyTwo from '@animations/enemyTwo'
+import EnemyThree from '@animations/enemyThree'
 
 const IndexPage = () => {
   setTimeout(() => {
     //Background()
    // Dog()
    //EnemyOne()
-   EnemyTwo()
+   //EnemyTwo()
+   EnemyThree()
   }, 10)
 
   return (
