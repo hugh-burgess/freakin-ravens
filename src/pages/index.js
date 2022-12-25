@@ -6,7 +6,7 @@ import '@styles/style.css'
 // import EnemyTwo from '@animations/enemyTwo'
 // import EnemyThree from '@animations/enemyThree'
 // import EnemyFour from '@animations/enemyFour'
- import Collisions from '@animations/collisions'
+ import Explosions from '@animations/explosion'
 
 const IndexPage = () => {
   setTimeout(() => {
@@ -16,7 +16,7 @@ const IndexPage = () => {
     // EnemyTwo()
     // EnemyThree()
     // EnemyFour()
-    Collisions()
+    Explosions()
   }, 10)
 
   return (

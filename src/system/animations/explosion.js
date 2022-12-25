@@ -1,7 +1,7 @@
 import explosionImage from '@images/boom.png'
 import boomSound from "@sounds/boom.wav"
 
-const Collisions = () => {
+const Explosions = () => {
   const CANVAS = document.getElementById('canvas4')
   const ctx = CANVAS.getContext('2d')
   const CANVAS_WIDTH = (CANVAS.width = 500)
@@ -91,4 +91,4 @@ const Collisions = () => {
   animate()
 }
 
-export default Collisions
+export default Explosions
