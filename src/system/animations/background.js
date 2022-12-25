@@ -5,7 +5,7 @@ import layer4 from '@images/layer-4.png'
 import layer5 from '@images/layer-5.png'
 
 const Background = () => {
-  const CANVAS = document.getElementById('canvas1')
+  const CANVAS = document.getElementById('canvasForBackground')
   const ctx = CANVAS.getContext('2d')
   const CANVAS_WIDTH = (CANVAS.width = 800)
   const CANVAS_HEIGHT = (CANVAS.height = 700)
