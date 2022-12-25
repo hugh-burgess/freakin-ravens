@@ -2,19 +2,21 @@ import React from 'react'
 import '@styles/style.css'
 //import Dog from '@animations/dog'
 //import Background from '@animations/background'
-//import EnemyOne from '@animations/enemyOne'
-//import EnemyTwo from '@animations/enemyTwo'
-//import EnemyThree from '@animations/enemyThree'
-import EnemyFour from '@animations/enemyFour'
+// import EnemyOne from '@animations/enemyOne'
+// import EnemyTwo from '@animations/enemyTwo'
+// import EnemyThree from '@animations/enemyThree'
+// import EnemyFour from '@animations/enemyFour'
+ import Collisions from '@animations/collisions'
 
 const IndexPage = () => {
   setTimeout(() => {
     //Background()
-   // Dog()
-   //EnemyOne()
-   //EnemyTwo()
-   //EnemyThree()
-   EnemyFour()
+    // Dog()
+    // EnemyOne()
+    // EnemyTwo()
+    // EnemyThree()
+    // EnemyFour()
+    Collisions()
   }, 10)
 
   return (
@@ -23,7 +25,8 @@ const IndexPage = () => {
       <div id="container">
         {/* <canvas id="canvas1"></canvas> */}
         {/* <canvas id="canvas2"></canvas> */}
-        <canvas id="canvas3"></canvas>
+        {/* <canvas id="canvas3"></canvas> */}
+        <canvas id="canvas4"></canvas>
         {/* <p>
           Game speed: <span id="showGameSpeed"></span>
         </p> */}
@@ -51,4 +54,4 @@ const IndexPage = () => {
 
 export default IndexPage
 
-export const Head = () => <title>Hugh's Dog</title>
+export const Head = () => <title>Game</title>

@@ -1,5 +1,4 @@
 import enemyImageFour from '@images/enemy4.png'
-import { textChangeRangeIsUnchanged } from 'typescript'
 
 const EnemyFour = () => {
   /** @type {HTMLCanvasElement} */ // tells JS this is a canvas project and thus we get options for ctx

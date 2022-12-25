@@ -7,7 +7,7 @@ Step by step, building a small game:
 - [x] animations
 - [x] parallax backgrounds
 - [x] enemy movement patterns
-- [ ] collisions
+- [x] collisions
 - [ ] point and shoot
 - [ ] enemy variety
 - [ ] side-scroller

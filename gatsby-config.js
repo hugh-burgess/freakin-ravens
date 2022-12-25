@@ -34,6 +34,7 @@ module.exports = {
           '@styles': path.resolve(__dirname, 'static/styles'),
           '@system': path.resolve(__dirname, 'src/system'),
           '@images': path.resolve(__dirname, 'static/images'),
+          '@sounds': path.resolve(__dirname, 'static/sounds'),
           '@animations': path.resolve(__dirname, 'src/system/animations'),
         },
        extensions: ['js', 'css', 'json'],
