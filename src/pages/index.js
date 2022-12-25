@@ -1,24 +1,33 @@
 import React from 'react'
 import '@styles/style.css'
 //import Dog from '@animations/dog'
-import Background from '@animations/background'
+//import Background from '@animations/background'
+//import EnemyOne from '@animations/enemyOne'
+//import EnemyTwo from '@animations/enemyTwo'
+//import EnemyThree from '@animations/enemyThree'
+import EnemyFour from '@animations/enemyFour'
 
 const IndexPage = () => {
   setTimeout(() => {
-    Background()
+    //Background()
    // Dog()
+   //EnemyOne()
+   //EnemyTwo()
+   //EnemyThree()
+   EnemyFour()
   }, 10)
 
   return (
     <main className="pageStyles">
-      <h1 className="headingStyles">Dog Animations</h1>
+      {/* <h1 className="headingStyles">Dog Animations</h1> */}
       <div id="container">
-        <canvas id="canvas1"></canvas>
+        {/* <canvas id="canvas1"></canvas> */}
         {/* <canvas id="canvas2"></canvas> */}
-        <p>
+        <canvas id="canvas3"></canvas>
+        {/* <p>
           Game speed: <span id="showGameSpeed"></span>
-        </p>
-        <input type="range" min="0" max="20" className="slider" id="slider" />
+        </p> */}
+        {/* <input type="range" min="0" max="20" className="slider" id="slider" /> */}
       </div>
       {/* <div className="controls">
         <label for="animations">Choose animation: 
