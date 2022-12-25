@@ -4,7 +4,8 @@ import '@styles/style.css'
 //import Background from '@animations/background'
 //import EnemyOne from '@animations/enemyOne'
 //import EnemyTwo from '@animations/enemyTwo'
-import EnemyThree from '@animations/enemyThree'
+//import EnemyThree from '@animations/enemyThree'
+import EnemyFour from '@animations/enemyFour'
 
 const IndexPage = () => {
   setTimeout(() => {
@@ -12,7 +13,8 @@ const IndexPage = () => {
    // Dog()
    //EnemyOne()
    //EnemyTwo()
-   EnemyThree()
+   //EnemyThree()
+   EnemyFour()
   }, 10)
 
   return (
