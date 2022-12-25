@@ -1,7 +1,4 @@
 import enemyImageOne from '@images/enemy1.png'
-import enemyImageTwo from '@images/enemy2.png'
-import enemyImageThree from '@images/enemy3.png'
-import enemyImageFour from '@images/enemy4.png'
 
 const Enemies = () => {
   /** @type {HTMLCanvasElement} */ // tells JS this is a canvas project and thus we get options for ctx
@@ -9,15 +6,8 @@ const Enemies = () => {
   const ctx = CANVAS.getContext('2d')
   const CANVAS_WIDTH = (CANVAS.width = 400)
   const CANVAS_HEIGHT = (CANVAS.height = 800)
-  const NUMBER_OF_ENEMIES = 100
+  const NUMBER_OF_ENEMIES = 30
   const ENEMIES_ARRAY = []
-
-  const ENEMY_IMAGE_2 = new Image()
-  ENEMY_IMAGE_2.src = enemyImageTwo
-  const ENEMY_IMAGE_3 = new Image()
-  ENEMY_IMAGE_3.src = enemyImageThree
-  const ENEMY_IMAGE_4 = new Image()
-  ENEMY_IMAGE_4.src = enemyImageFour
 
   let gameFrame = 0
 
@@ -34,27 +24,39 @@ const Enemies = () => {
       // mandatory class every Class must have containing a blueprint based on which every enemy is created
       this.image = new Image()
       this.image.src = enemyImageOne
-      this.x = Math.random() * CANVAS.width // randomise the enemy starting position
-      this.y = Math.random() * CANVAS.height
-      this.speed = Math.random() * 4 - 2 // creates a speed between -2 and +2
+      // this.speed = Math.random() * 4 - 2 // creates a speed between -2 and +2
       this.spriteWidth = 293
       this.spriteHeight = 155
       this.width = this.spriteWidth / 3 // one third of sprite width
       this.height = this.spriteHeight / 3 // one third of sprite height
+      this.x = Math.random() * (CANVAS.width - this.width) // randomise the enemy starting position
+      this.y = Math.random() * (CANVAS.height - this.height)
       this.frame = 0
       this.flapSpeed = Math.floor(Math.random() * 3 + 1) // random number between 1 and 4
     }
     update() {
       // a shared class method
-      this.x += this.speed
-      this.y += this.speed
+      // this.x += this.speed
+      this.x += Math.random() * 5 - 2.5 // create jumpy animations between -2.5 and +2.5
+      this.y += Math.random() * 5 - 2.5
       // animate sprites
-      if (gameFrame % this.flapSpeed === 0) { // runs code every twoo loops of every animatioon loop
-          this.frame > 4 ? this.frame = 0 : this.frame++
+      if (gameFrame % this.flapSpeed === 0) {
+        // runs code every twoo loops of every animatioon loop
+        this.frame > 4 ? (this.frame = 0) : this.frame++
       }
     }
     draw() {
-      ctx.drawImage(this.image, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height)
+      ctx.drawImage(
+        this.image,
+        this.frame * this.spriteWidth,
+        0,
+        this.spriteWidth,
+        this.spriteHeight,
+        this.x,
+        this.y,
+        this.width,
+        this.height
+      )
     }
   }
 

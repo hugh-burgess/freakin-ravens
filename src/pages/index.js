@@ -2,13 +2,13 @@ import React from 'react'
 import '@styles/style.css'
 //import Dog from '@animations/dog'
 //import Background from '@animations/background'
-import Enemies from '@animations/enemies'
+import EnemyOne from '@animations/enemyOne'
 
 const IndexPage = () => {
   setTimeout(() => {
     //Background()
    // Dog()
-   Enemies()
+   EnemyOne()
   }, 10)
 
   return (
