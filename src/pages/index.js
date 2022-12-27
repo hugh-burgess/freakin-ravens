@@ -6,7 +6,8 @@ import '@styles/style.css'
 // import EnemyTwo from '@animations/enemyTwo'
 // import EnemyThree from '@animations/enemyThree'
 // import EnemyFour from '@animations/enemyFour'
- import Explosions from '@animations/explosion'
+//import Explosions from '@animations/explosion'
+import PointAndShoot from '@animations/pointAndShoot'
 
 const IndexPage = () => {
   setTimeout(() => {
@@ -16,7 +17,8 @@ const IndexPage = () => {
     // EnemyTwo()
     // EnemyThree()
     // EnemyFour()
-    Explosions()
+    //Explosions()
+    PointAndShoot()
   }, 10)
 
   return (
@@ -29,7 +31,9 @@ const IndexPage = () => {
         {/* <canvas id="canvasForEnemyTwo"></canvas> */}
         {/* <canvas id="canvasForEnemyThree"></canvas> */}
         {/* <canvas id="canvasForEnemyFour"></canvas> */}
-        <canvas id="canvasForExplosions"></canvas>
+        {/* <canvas id="canvasForExplosions"></canvas>{' '} */}
+        <canvas id="collisionCanvas"></canvas>
+        <canvas id="canvasForPointAndShoot"></canvas>
         {/* <p>
           Game speed: <span id="showGameSpeed"></span>
         </p> */}
