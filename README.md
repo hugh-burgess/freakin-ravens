@@ -1,14 +1,8 @@
-# game
+# Freakin' Ravens
 
-This project is a little test to see if it's possible to create a game from React or JS.
 
-Step by step, building a small game:
+lets get em!
 
-- [x] animations
-- [x] parallax backgrounds
-- [x] enemy movement patterns
-- [x] collisions
-- [x] point and shoot
-- [ ] enemy variety
-- [ ] side-scroller
-- [ ] state management
+To play:
+
+run `yarn serve` to play the game in your browser with localhost.

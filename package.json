@@ -1,6 +1,7 @@
 {
-  "name": "game",
+  "name": "freakinravens",
   "version": "1.0.0",
+  "author": "hugh burgess",
   "private": true,
   "description": "game",
   "keywords": [
@@ -25,6 +26,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hugh-burgess/game/game-app"
+    "url": "https://github.com/hugh-burgess/freakin-ravens"
   }
 }
